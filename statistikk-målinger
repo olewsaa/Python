@@ -1,0 +1,42 @@
+import statistics 
+import scipy.stats as stat 
+
+a=[23.94, 24.38, 24.22]
+print("data ",a)
+gjennomsnitt=statistics.mean(a)
+print("Mean: ",gjennomsnitt)
+varians=statistics.variance(a)
+print("Variance: (sigma²)",varians)
+stdavvik=statistics.stdev(a)
+print("St.dev (sigma): ",stdavvik)
+
+print("Normalfordeling ± 2 sigma ", 100-stat.norm.cdf(-2)*2*100,"%")
+#
+# https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.t.html
+#
+# t-fordeling :
+frihetsgrader=len(a)-1
+pct=0; sdt=1
+while pct < 95:
+    sdt=sdt+0.01
+    pct=100-stat.t(len(a)-1).cdf(-sdt)*2*100
+print(sdt)
+
+print("t-fordeling med ",frihetsgrader," frihetsgrader ± 2 sigma  ", 100-stat.t(frihetsgrader).cdf(-2)*2*100,"%")
+print("± Standard deviations to get 95% confidence interval with ",len(a)," measurements") 
+print("t-fordeling med ",frihetsgrader," frihetsgrader ± ",sdt," sigma", 100-stat.t(frihetsgrader).cdf(-4.3)*2*100,"%")
+print()
+
+# 1 sigma er 68%
+# 2 sigma er 95%
+# 3 sigma er 99%
+print("Konfidensintervall")
+nedre=gjennomsnitt - 2*stdavvik
+øvre=gjennomsnitt  + 2*stdavvik
+print("Normalforelingen :")
+print("95% konfidensintervall er ", nedre,øvre)
+nedre=gjennomsnitt - sdt*stdavvik
+øvre=gjennomsnitt  + sdt*stdavvik
+print("t-fordelingen : ")
+print("95% konfidensintervall er ", nedre,øvre)
+

@@ -55,6 +55,6 @@ plt.xlabel('X values')
 plt.ylabel('Y values')
 plt.title('Simple linear regression')
 plt.savefig('mkl.png')
-plt.show()
+plt.show() 
 
 

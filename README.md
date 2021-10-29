@@ -2,5 +2,5 @@
 Binder open a Jupyter notebook and can run notbook python code.
 
 # Python
-Python snippets used in day to day work, short pieces of core to solve trival tasks. 
+Python snippets used in day to day work, short pieces of code to solve trival tasks. 
 

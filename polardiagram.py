@@ -9,7 +9,7 @@ speed=np.zeros([38,11])
 #windspeed=[int(x/1.852) for x in windspeed]
 windspeed=[int(x/1.852) for x in pol[0][2:-1]]
 theta=pol[:,0]
-theta=[x/180.0*3.1415 for x in theta]
+theta=[x/180.0*np.pi for x in theta]
 
 for p in range(1,len(pol)):
     speed[p,:]=pol[p,1:]
